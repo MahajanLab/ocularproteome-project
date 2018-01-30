@@ -1,0 +1,4 @@
+# user specific settings for pycharm
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/misc.xml
