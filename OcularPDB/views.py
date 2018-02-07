@@ -6,9 +6,9 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello, world. You made it to the fricking #web")
+    return render(request, "ocular_proteome_db/home.html")
 
 
-def secret():
-    return HttpResponse("OH FUCk swild")
+# def secret(name):
+#     return HttpResponse("OH FUCk swild"+name)
 
