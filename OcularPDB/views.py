@@ -16,6 +16,3 @@ def index(request):
 
 
 
-# def secret(name):
-#     return HttpResponse("OH FUCk swild"+name)
-
