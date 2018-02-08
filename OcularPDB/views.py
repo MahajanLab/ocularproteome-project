@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 
 def results(request):
-    return HttpResponse("OH FUCk swild")
+    return HttpResponse("Flowers and blue sky!")#replace this line with line below
     #return render(request, "ocular_proteome_db/results.html")
 
 
