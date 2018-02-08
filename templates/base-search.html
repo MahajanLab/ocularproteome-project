@@ -1,16 +1,74 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Bootstrap requires jQuery, popper.js and their own js files -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
 
-{% block form-content %}
-    <div>
-        <form action="/search/" method="post">
-            <div class="form-group">
-                <label for="protein-identifier">Enter Ensembl ID or Protein name</label>
-                <input id="protein-identifier" type="text" name="identifier">
+<style>
+    .content {
+        margin-top: 48px;
+    }
+    .box {
+        display: flex;
+        float: left;
+    }
+    .grow {
+        margin-right: 8px !important;
+        flex-grow: 100;
+    }
+    .full-width {
+        width: 100%!important;
+    }
+    body {
+        overflow-x: hidden;
+    }
+</style>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Ocular Proteome Database</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Search <span class="sr-only">(current)</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Download</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3 content">
+            <label for="protein-identifier">Enter Ensembl ID or Protein name</label>
+            <div class="full-width">
+                <form class="box full-width" action="search/" method="post">
+                    <input id="protein-identifier" class="grow form-control" type="text" name="identifier">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="content">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
     </div>
 
-    {% block content %}{% endblock %}
-
-{% endblock %}
+</body>
+</html>
