@@ -9,26 +9,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
-<style>
-    .content {
-        margin-top: 48px;
-    }
-    .box {
-        display: flex;
-        float: left;
-    }
-    .grow {
-        margin-right: 8px !important;
-        flex-grow: 100;
-    }
-    .full-width {
-        width: 100%!important;
-    }
-    body {
-        overflow-x: hidden;
-    }
-</style>
-
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -51,24 +31,10 @@
         </div>
     </nav>
 
-    <div class="row">
-        <div class="col-md-6 offset-md-3 content">
-            <label for="protein-identifier">Enter Ensembl ID or Protein name</label>
-            <div class="full-width">
-                <form class="box full-width" action="search" method="post">
-                    <input id="protein-identifier" class="grow form-control" type="text" name="identifier">
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <div class="content">
-                {% block content %}{% endblock %}
-            </div>
-        </div>
+    <div id="content" class="col-md-9 col-md-offset-3">
+        {% block form-content %}{% endblock %}
     </div>
 
 </body>
+
 </html>

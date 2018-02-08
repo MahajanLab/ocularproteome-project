@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from OcularPDB import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', include('OcularPDB.urls')),
+    path('home/', views.index, name='index'), #include('OcularPDB.urls')),
+    path('search/', views.results, name='index'),
 ]
