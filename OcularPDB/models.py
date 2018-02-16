@@ -6,12 +6,12 @@ from django.db import models
 # search for a protein by its ens_id, we only have to look in one place
 # rather than having to search each model until we find it
 class Protein(models.Model):
-    ens_id = models.CharField(primary_key=True)
+    ens_id = models.CharField(primary_key=True, max_length=200)
 
 
 # inherits from base class called Protein
 class RCProtein(Protein):
-    name = models.CharField(unique=True)
+    name = models.CharField(unique=True, max_length=200)
     fovea_avg = models.IntegerField
     macula_avg = models.IntegerField
     periphery_avg = models.IntegerField

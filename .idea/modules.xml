@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ocular_proteome_db.iml" filepath="$PROJECT_DIR$/.idea/ocular_proteome_db.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/ocular_proteome_db.iml" filepath="$PROJECT_DIR$/.idea/ocular_proteome_db.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ocularproteome_project.iml" filepath="$PROJECT_DIR$/.idea/ocularproteome_project.iml" />
     </modules>
   </component>
 </project>
