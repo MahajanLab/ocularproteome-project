@@ -17,15 +17,15 @@
                 </tr>
             </thead>
             <tbody>
-                {% for protein in proteins %}
+{#                {% for protein in proteins %}#}
                     <tr>
-                        <td>{{ protein.id }}</td>
-                        <td>{{ protein.name }}</td>
-                        <td>{{ protein.fovea }}</td>
-                        <td>{{ protein.macula }}</td>
-                        <td>{{ protein.periphery }}</td>
+                        <td>{{ proteins.ens_id }}</td>
+                        <td>{{ proteins.name }}</td>
+                        <td>{{ proteins.fovea_avg }}</td>
+                        <td>{{ proteins.macula_avg }}</td>
+                        <td>{{ proteins.periphery_avg }}</td>
                     </tr>
-                {% endfor %}
+{#                {% endfor %}#}
             </tbody>
         </table>
     </div>
