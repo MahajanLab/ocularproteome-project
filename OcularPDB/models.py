@@ -31,3 +31,11 @@ class RetinaProtein(models.Model):
     fovea_avg = models.IntegerField()
     macula_avg = models.IntegerField()
     periphery_avg = models.IntegerField()
+
+
+class ChoroidProtein(models.Model):
+    ens_id = models.CharField(primary_key=True, max_length=255, default='x')
+    name = models.CharField(unique=True, max_length=255)
+    fovea_avg = models.IntegerField()
+    macula_avg = models.IntegerField()
+    periphery_avg = models.IntegerField()
