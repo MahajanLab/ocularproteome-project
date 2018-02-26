@@ -12,3 +12,7 @@ def results(request):
 
 def index(request):
     return render(request, "ocular_proteome_db/home.html")
+
+
+def download(request):
+    return render(request, "ocular_proteome_db/download.html")

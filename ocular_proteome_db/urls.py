@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', views.index, name='index'), #include('OcularPDB.urls')),
     path('search/', views.results, name='index'),
+    path('download/', views.download, name='download')
 ]
