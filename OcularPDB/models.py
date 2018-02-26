@@ -31,3 +31,6 @@ class RetinaProtein(models.Model):
     fovea_avg = models.IntegerField()
     macula_avg = models.IntegerField()
     periphery_avg = models.IntegerField()
+
+    def __str__(self):
+        return self.ens_id

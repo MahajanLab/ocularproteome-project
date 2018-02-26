@@ -17,15 +17,15 @@
                 </tr>
             </thead>
             <tbody>
-{#                {% for protein in proteins %}#}
+                {% for key, value in protein_dict.items %}
                     <tr>
-                        <td>{{ protein.ens_id }}</td>
+                        <td>{{ key }} : {{ value.ens_id }}{#  {protein.ens_id }#}</td>
                         <td>{{ protein.name }}</td>
                         <td>{{ protein.fovea_avg }}</td>
                         <td>{{ protein.macula_avg }}</td>
                         <td>{{ protein.periphery_avg }}</td>
                     </tr>
-{#                {% endfor %}#}
+                {% endfor %}
             </tbody>
         </table>
     </div>
