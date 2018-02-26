@@ -4,10 +4,18 @@ from OcularPDB.models import RetinaProtein
 
 def results(request):
     identifier = request._post['identifier']
-    proteins = RetinaProtein.objects.get(pk=identifier)
-    vars = {'proteins': proteins}
 
-    return render(request, "ocular_proteome_db/results.html", context=vars)
+    proteinS = identifier.split(', ')
+    errorProteins = []
+
+    for p in range(len(proteinS)):
+        try:
+            protein = RetinaProtein.objects.get(pk=p)
+            vars = {'protein': protein}
+            return render(request, "ocular_proteome_db/results.html", context=vars)
+        except:
+            errorProteins.append(p)
+            return render(request, "ocular_proteome_db/results.html", context = "Errorsx")
 
 
 def index(request):
