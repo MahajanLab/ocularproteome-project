@@ -1,12 +1,24 @@
 {% extends "base.html" %}
 
-{% block contents %}
-    <div class="col-md-9 col-offset-3">
-        <a href="/assets/retina-dataset.zip" download>
-            <h4>
-                <button class="btn">Download Retina Proteome Dataset</button>
-            </h4>
-        </a>
-        <p>Here's some information about the retina proteome dataset.</p>
-    </div>
+{% block content %}
+    <a href="/assets/retina-dataset.zip" download>
+        <h4>
+            <button class="btn">Download Retina Proteome Dataset</button>
+        </h4>
+    </a>
+    <p>Here's some information about the retina proteome dataset.</p>
+    <br>
+    <a href="/assets/choroid-dataset.zip" download>
+        <h4>
+            <button class="btn">Download RPE Choroid Proteome Dataset</button>
+        </h4>
+    </a>
+    <p>Here's some information about the RPE choroid proteome dataset.</p>
+    <br>
+    <a href="/assets/vitreous-dataset.zip" download>
+        <h4>
+            <button class="btn">Download Vitreous Proteome Dataset</button>
+        </h4>
+    </a>
+    <p>Here's some information about the vitreous proteome dataset.</p>
 {% endblock %}
