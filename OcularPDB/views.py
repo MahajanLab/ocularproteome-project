@@ -10,12 +10,12 @@ def results(request):
 
     print(protein_array[0])
     protein = RetinaProtein.objects.get(pk=protein_array[0])  # return a RetinaProtein object
-    protein_list = [protein]  # add the RetinaProtein object to dict which will hold all the proteins
+    protein_list = [protein]  # add the RetinaProtein object to list which will hold all the proteins
 
     for i in range(1, len(protein_array)):
         try:
-            protein = RetinaProtein.objects.get(pk=protein_array[i])  # return a RetinaProtein object
-            protein_list.append(protein)  # update dict with dict object containing the last protein
+            protein = RetinaProtein.objects.get(pk=protein_array[i])  # get next Protein object
+            protein_list.append(protein)  # append new protein to list
         except:
             print("error", protein_array[i])
             error_proteins.append(protein_array[i])  # if the protein is not found in the database, add it to the list
