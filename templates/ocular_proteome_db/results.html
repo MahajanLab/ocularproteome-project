@@ -5,6 +5,14 @@
 </head>
 
 {% block content %}
+    {% if error_list %}
+        <div class="alert alert-danger" role="alert">
+            Not found:
+            {% for element in error_list %}
+                {{ element }}
+            {%  endfor %}
+        </div>
+    {% endif %}
     <div>
         <table class="table">
             <thead>
