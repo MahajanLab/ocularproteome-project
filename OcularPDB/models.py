@@ -32,6 +32,18 @@ class RetinaProtein(models.Model):
     macula_avg = models.IntegerField()
     periphery_avg = models.IntegerField()
 
+    @staticmethod
+    def search(protein_identifier):
+        protein_error = None
+        protein_found = None
+        try:
+            protein_found = RetinaProtein.objects.get(pk=protein_identifier)  # get next Protein object
+        except:
+            protein_error = protein_identifier
+            print("error", protein_identifier)
+
+        return protein_found, protein_error
+
     def __str__(self):
         return self.ens_id
 
@@ -42,3 +54,17 @@ class ChoroidProtein(models.Model):
     fovea_avg = models.IntegerField()
     macula_avg = models.IntegerField()
     periphery_avg = models.IntegerField()
+
+    @staticmethod
+    def search(protein_identifier):
+        protein_error = None
+        protein_found = None
+        try:
+            protein_found = ChoroidProtein.objects.get(pk=protein_identifier)  # get next Protein object
+        except:
+            protein_error = protein_identifier
+            print("error", protein_identifier)
+        return protein_found, protein_error
+
+    def __str__(self):
+        return self.ens_id
