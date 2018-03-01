@@ -22,15 +22,11 @@ def results(request):
             error_proteins.append(p_error + ' ')  # if the protein is not found in the database, add it to the list
         else:
             protein_list.append(p_found)  # append new protein to list
-            
-
 
     data = {'protein_list': protein_list,
             'error_list': error_proteins}
 
     return render(request, "ocular_proteome_db/results.html", context=data)
-
-
 
 
 def index(request):

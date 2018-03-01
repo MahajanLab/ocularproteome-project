@@ -2,6 +2,16 @@
 
 <head>
     <title>Ocular Proteome DB Results</title>
+    {% block scripts %}
+        {% load staticfiles %}
+        <script src="{% static "js/jquery.tablesorter.min.js" %}"></script>
+        <script type="text/javascript">
+            $( document ).ready(function() {
+                console.log("loading table sorter");
+                $("#proteinTable").tablesorter();
+            });
+        </script>
+    {% endblock %}
 </head>
 
 {% block content %}
@@ -14,20 +24,20 @@
         </div>
     {% endif %}
     <div>
-        <table class="table">
+        <table id="proteinTable" class="tablesorter table">
             <thead>
                 <tr>
-                    <th scope="col">Protein ID</th>
-                    <th scope="col">Protein Name</th>
-                    <th scope="col">Fovea Average</th>
-                    <th scope="col">Macula Average</th>
-                    <th scope="col">Periphery Average</th>
+                    <th>Protein ID</th>
+                    <th>Protein Name</th>
+                    <th>Fovea Average</th>
+                    <th>Macula Average</th>
+                    <th>Periphery Average</th>
                 </tr>
             </thead>
             <tbody>
                 {% for p in protein_list %}
                     <tr>
-                        <td>{{ p.ens_id }}</td> {# {protein.ens_id } #}
+                        <td>{{ p.ens_id }}</td>
                         <td>{{ p.name }}</td>
                         <td>{{ p.fovea_avg }}</td>
                         <td>{{ p.macula_avg }}</td>
