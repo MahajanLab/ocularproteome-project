@@ -19,6 +19,7 @@
                 <tr>
                     <th scope="col">Protein ID</th>
                     <th scope="col">Protein Name</th>
+                    <th scope="col">Data Set</th>
                     <th scope="col">Fovea Average</th>
                     <th scope="col">Macula Average</th>
                     <th scope="col">Periphery Average</th>
@@ -29,6 +30,7 @@
                     <tr>
                         <td>{{ p.ens_id }}</td> {# {protein.ens_id } #}
                         <td>{{ p.name }}</td>
+                        <td>{{ p.data_set }}</td>
                         <td>{{ p.fovea_avg }}</td>
                         <td>{{ p.macula_avg }}</td>
                         <td>{{ p.periphery_avg }}</td>
