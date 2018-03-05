@@ -44,7 +44,12 @@ class RetinaProtein(models.Model):
             protein_found = RetinaProtein.objects.get(pk=protein_identifier)  # get next Protein object
         except:
             protein_error = protein_identifier
-            print("error", protein_identifier)
+
+        if protein_found is None:
+            try:
+                protein_found = RetinaProtein.objects.filter(name=protein_identifier)[0]
+            except IndexError:
+                protein_error = protein_identifier
 
         return protein_found, protein_error
 
@@ -69,6 +74,13 @@ class ChoroidProtein(models.Model):
         except:
             protein_error = protein_identifier
             print("error", protein_identifier)
+
+        if protein_found is None:
+            try:
+                protein_found = ChoroidProtein.objects.filter(name=protein_identifier)[0]
+            except IndexError:
+                protein_error = protein_identifier
+
         return protein_found, protein_error
 
     def __str__(self):

@@ -37,7 +37,8 @@ def results(request):
     error_proteins = list(set(error_proteins)-set(protein_list_strings))
 
     data = {'protein_list': protein_list,
-            'error_list': error_proteins}
+            'error_list': error_proteins,
+            'search_text': identifier}
 
     return render(request, "ocular_proteome_db/results.html", context=data)
 
