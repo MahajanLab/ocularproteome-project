@@ -6,7 +6,7 @@ from OcularPDB.models import ChoroidProtein
 def results(request):
     identifier = request._post['identifier']
 
-    protein_input = identifier.split(' ')  # split elements in input into different elements at a space
+    protein_input = list(set(identifier.split(' ')))  # split elements in input into different elements at a space
     error_proteins = []  # list to store proteins entered but not found in database
     protein_list = []  # add the RetinaProtein object to list which will hold all the proteins
     protein_list_strings = []
