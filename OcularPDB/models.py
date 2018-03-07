@@ -60,7 +60,7 @@ class RetinaProtein(models.Model):
 class ChoroidProtein(models.Model):
     ens_id = models.CharField(primary_key=True, max_length=255, default='x')
     name = models.CharField(unique=True, max_length=255)
-    data_set = 'Choroid'
+    data_set = 'RPE-Choroid'
     fovea_avg = models.IntegerField()
     macula_avg = models.IntegerField()
     periphery_avg = models.IntegerField()
