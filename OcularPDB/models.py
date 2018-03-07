@@ -27,8 +27,8 @@ from django.db import models
 
 class RetinaProtein(models.Model):
     ens_id = models.CharField(primary_key=True, max_length=255, default='x')
-    name = models.CharField(unique=True, max_length=255)
-    data_set = 'Retina'
+    name = models.CharField(max_length=255, null=True)
+    tissue = 'Retina'
     fovea_avg = models.IntegerField()
     macula_avg = models.IntegerField()
     periphery_avg = models.IntegerField()
@@ -59,8 +59,8 @@ class RetinaProtein(models.Model):
 
 class ChoroidProtein(models.Model):
     ens_id = models.CharField(primary_key=True, max_length=255, default='x')
-    name = models.CharField(unique=True, max_length=255)
-    data_set = 'Choroid'
+    name = models.CharField(max_length=255, null=True)
+    tissue = 'RPE-Choroid'
     fovea_avg = models.IntegerField()
     macula_avg = models.IntegerField()
     periphery_avg = models.IntegerField()
@@ -85,3 +85,28 @@ class ChoroidProtein(models.Model):
 
     def __str__(self):
         return self.ens_id
+
+
+class VitreousProtein(models.Model):
+    ens_id = models.CharField(primary_key=True, max_length=255, default='x')
+    name = models.CharField(max_length=255, null=True)
+    tissue = 'Vitreous'
+    posterior_hyaloid = models.IntegerField()
+    anterior_hyaloid = models.IntegerField()
+    vitreous_base = models.IntegerField()
+    vitreous_core = models.IntegerField()
+
+    @staticmethod
+    def search(protein_identifier):
+        protein = None
+
+        # try to find by ens_id and by name
+        ens_results = VitreousProtein.objects.filter(ens_id=protein_identifier)
+        name_results = VitreousProtein.objects.filter(name=protein_identifier)
+
+        if ens_results.count() == 1:
+            protein = ens_results.get(0)
+        elif name_results.count() == 1:
+            protein = name_results.get(0)
+
+        return protein

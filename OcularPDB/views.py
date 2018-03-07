@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from OcularPDB.models import RetinaProtein
-from OcularPDB.models import ChoroidProtein
+from OcularPDB.models import RetinaProtein, ChoroidProtein, VitreousProtein
 
 
 def results(request):
@@ -12,6 +11,7 @@ def results(request):
     protein_list_strings = []
 
     for i in range(len(protein_input)):
+        # Search in Retina table
         p_found, p_error = RetinaProtein.search(protein_input[i])
 
         if p_found is None:
@@ -22,6 +22,7 @@ def results(request):
             protein_list.append(p_found)  # append new protein to list
             protein_list_strings.append(name)
 
+        # Search in RPE-Choroid table
         p_found, p_error = ChoroidProtein.search(protein_input[i])
 
         if p_found is None:
@@ -31,6 +32,15 @@ def results(request):
             # if name not in protein_list_strings:
             protein_list.append(p_found)  # append new protein to list
             protein_list_strings.append(name)
+
+        # Search in Vitreous table
+        prot = VitreousProtein.search(protein_input[i])
+
+        if prot is None:
+            error_proteins.append(protein_input[i] + ' ')
+        else:
+            protein_list.append(prot)  # add new protein
+            protein_list_strings.append(prot.ens_id)
 
     error_proteins = list(set(error_proteins))
     print(protein_list_strings)
