@@ -4,43 +4,39 @@ from OcularPDB.models import RetinaProtein, ChoroidProtein, VitreousProtein
 
 def results(request):
     identifier = request._post['identifier']
-
     protein_input = list(set(identifier.split(' ')))  # split elements in input into different elements at a space
+
     error_proteins = []  # list to store proteins entered but not found in database
     protein_list = []  # add the RetinaProtein object to list which will hold all the proteins
     protein_list_strings = []
 
     for i in range(len(protein_input)):
         # Search in Retina table
-        p_found, p_error = RetinaProtein.search(protein_input[i])
+        retina_protein = RetinaProtein.search(protein_input[i])
 
-        if p_found is None:
-            error_proteins.append(p_error + ' ')  # if the protein is not found in the database, add it to the list
-        else:
-            name = p_found.ens_id + ' '
-            # if name not in protein_list_strings:
-            protein_list.append(p_found)  # append new protein to list
-            protein_list_strings.append(name)
-
-        # Search in RPE-Choroid table
-        p_found, p_error = ChoroidProtein.search(protein_input[i])
-
-        if p_found is None:
-            error_proteins.append(p_error + ' ')  # if the protein is not found in the database, add it to the list
-        else:
-            name = p_found.ens_id + ' '
-            # if name not in protein_list_strings:
-            protein_list.append(p_found)  # append new protein to list
-            protein_list_strings.append(name)
-
-        # Search in Vitreous table
-        prot = VitreousProtein.search(protein_input[i])
-
-        if prot is None:
+        if retina_protein is None:
             error_proteins.append(protein_input[i] + ' ')
         else:
-            protein_list.append(prot)  # add new protein
-            protein_list_strings.append(prot.ens_id)
+            protein_list.append(retina_protein)
+            protein_list_strings.append(retina_protein.ens_id + ' ')
+
+        # Search in RPE-Choroid table
+        choroid_protein = ChoroidProtein.search(protein_input[i])
+
+        if choroid_protein is None:
+            error_proteins.append(protein_input[i] + ' ')
+        else:
+            protein_list.append(choroid_protein)
+            protein_list_strings.append(choroid_protein.ens_id + ' ')
+
+        # Search in Vitreous table
+        vitreous_protein = VitreousProtein.search(protein_input[i])
+
+        if vitreous_protein is None:
+            error_proteins.append(protein_input[i] + ' ')
+        else:
+            protein_list.append(vitreous_protein)
+            protein_list_strings.append(vitreous_protein.ens_id + ' ')
 
     error_proteins = list(set(error_proteins))
     print(protein_list_strings)
