@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from OcularPDB.models import RetinaProtein, ChoroidProtein, VitreousProtein
 
 
@@ -55,3 +56,27 @@ def index(request):
 
 def download(request):
     return render(request, "ocular_proteome_db/download.html")
+
+
+zip_root_dir = "/home/ted/Development/django-apps/ocular_proteome_db/OcularPDB/static/"
+
+
+def download_retina(request):
+    with open(zip_root_dir + "retina_dataset.zip", 'rb') as zipfile:
+        response = HttpResponse(zipfile.read(), content_type='application/force-download')
+        response['Content-Disposition'] = 'attachment;filename=retina_dataset.zipfile'
+        return response
+
+
+def download_choroid(request):
+    with open(zip_root_dir + "rpe_choroid_dataset.zip", 'rb') as zipfile:
+        response = HttpResponse(zipfile.read(), content_type='application/force-download')
+        response['Content-Disposition'] = 'attachment;filename=rpe_choroid_dataset.zip'
+        return response
+
+
+def download_vitreous(request):
+    with open(zip_root_dir + "vitreous-dataset.zip", 'rb') as zipfile:
+        response = HttpResponse(zipfile.read(), content_type='application/force-download')
+        response['Content-Disposition'] = 'attachment;filename=vitreous_dataset.zip'
+        return response

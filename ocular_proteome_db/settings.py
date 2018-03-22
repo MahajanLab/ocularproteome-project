@@ -126,4 +126,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+MEDIA_ROOT = '/home/ted/Development/django-apps/ocular_proteome_db/OcularPDB/static/'
 STATIC_URL = '/static/'

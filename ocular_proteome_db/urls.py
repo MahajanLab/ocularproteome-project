@@ -21,5 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', views.index, name='index'), #include('OcularPDB.urls')),
     path('search/', views.results, name='index'),
-    path('download/', views.download, name='download')
+    path('download/', views.download, name='download'),
+    path('download_retina/', views.download_retina, name='download_retina'),
+    path('download_choroid/', views.download_choroid, name='download_rpe_choroid'),
+    path('download_vitreous/', views.download_vitreous, name='download_vitreous')
 ]
