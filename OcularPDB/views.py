@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from OcularPDB.models import RetinaProtein, ChoroidProtein, VitreousProtein
+from OcularPDB.models import RetinaProtein, ChoroidProtein, VitreousProtein, MouseProtein
 
 
 def results(request):
@@ -38,6 +38,14 @@ def results(request):
         else:
             protein_list.append(vitreous_protein)
             protein_list_strings.append(vitreous_protein.ens_id + ' ')
+
+        # # Search mouse table
+        # mouse_protein = MouseProtein.search(protein_input[i])
+        # if mouse_protein is None:
+        #     error_proteins.append(protein_input[i] + ' ')
+        # else:
+        #     protein_list.append(mouse_protein)
+        #     protein_list_strings.append(mouse_protein)
 
     error_proteins = list(set(error_proteins))
     print(protein_list_strings)

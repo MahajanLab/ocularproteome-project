@@ -75,3 +75,23 @@ class VitreousProtein(models.Model):
             protein = name_results.get()
 
         return protein
+
+
+class MouseProtein(models.Model):
+    ens_id = models.CharField(primary_key=True, max_length=255, default='x')
+    name = models.CharField(max_length=255, null=True)
+    tissue = models.CharField(max_length=255, null=False)
+    count = models.IntegerField()
+
+    @staticmethod
+    def search(protein_identifier):
+        protein = None
+        ens_results = MouseProtein.objects.filter(ens_id=protein_identifier)
+        name_results = MouseProtein.objects.filter(name=protein_identifier)
+
+        if ens_results.count() == 1:
+            protein = ens_results.get()
+        elif name_results.count() == 1:
+            protein = name_results.get()
+
+        return protein

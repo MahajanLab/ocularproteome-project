@@ -6,20 +6,28 @@
         {% load staticfiles %}
         <script src="{% static "js/jquery.tablesorter.min.js" %}"></script>
         <script type="text/javascript">
-            $( document ).ready(function() {
-                console.log("loading table sorter");
-                $("#proteinTable").tablesorter();
+            $(document).ready( function () {
+                console.log('loading table sorter');
+                $('#proteinTable').tablesorter();
+            });
+            $(document).ready( function () {
+                $('#protein-identifier').val( $('#input').text() );
             });
         </script>
         <style>
             th {
                 cursor: pointer;
             }
+            .table-container {
+                margin-bottom: 16px;
+                padding-bottom: 24px;
+            }
         </style>
     {% endblock %}
 </head>
 
 {% block content %}
+    <div hidden id="input">{{ search_text }}</div>
     {% if error_list %}
         <div class="alert alert-danger" role="alert">
             Not found:
@@ -28,30 +36,93 @@
             {%  endfor %}
         </div>
     {% endif %}
-    <div>
-        <table id="proteinTable" class="tablesorter table">
-            <thead>
-                <tr>
-                    <th>Protein ID</th>
-                    <th>Protein Name</th>
-                    <th>Tissue</th>
-                    <th>Fovea Average</th>
-                    <th>Macula Average</th>
-                    <th>Periphery Average</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for p in protein_list %}
+    {% if protein_list %}
+        <div class="table-container">
+            <h5>Human Retina and RPE-Choroid Proteome Results</h5>
+            <table id="proteinTable" class="tablesorter table">
+                <thead>
                     <tr>
-                        <td>{{ p.ens_id }}</td>
-                        <td>{{ p.name }}</td>
-                        <td>{{ p.data_set }}</td>
-                        <td>{{ p.fovea_avg }}</td>
-                        <td>{{ p.macula_avg }}</td>
-                        <td>{{ p.periphery_avg }}</td>
+                        <th>Protein ID</th>
+                        <th>Protein Name</th>
+                        <th>Tissue</th>
+                        <th>Fovea Average</th>
+                        <th>Macula Average</th>
+                        <th>Periphery Average</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    {% for p in protein_list %}
+                        {% if p.tissue != 'Vitreous' %}
+                            <tr>
+                                <td>{{ p.ens_id }}</td>
+                                <td>{{ p.name }}</td>
+                                <td>{{ p.tissue }}</td>
+                                <td>{{ p.fovea_avg }}</td>
+                                <td>{{ p.macula_avg }}</td>
+                                <td>{{ p.periphery_avg }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    {% if protein_list %}
+        <div class="table-container">
+            <h5>Human Vitreous Proteome Results</h5>
+            <table id="vitreous_table" class="tablesorter table">
+                <thead>
+                    <tr>
+                        <th>Protein ID</th>
+                        <th>Protein Name</th>
+                        <th>Tissue</th>
+                        <th>Posterior Hyaloid</th>
+                        <th>Anterior Hyaloid</th>
+                        <th>Vitreous Base</th>
+                        <th>Vitreous Core</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in protein_list %}
+                        {% if p.tissue == 'Vitreous' %}
+                            <tr>
+                                <td>{{ p.ens_id }}</td>
+                                <td>{{ p.name }}</td>
+                                <td>{{ p.tissue }}</td>
+                                <td>{{ p.posterior_hyaloid }}</td>
+                                <td>{{ p.anterior_hyaloid }}</td>
+                                <td>{{ p.vitreous_base }}</td>
+                                <td>{{ p.vitreous_core }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    {% if mouse_proteins %}
+        <div class="table-container">
+            <h5>Mouse Retina and Vitreous Proteome Results</h5>
+            <table id="mouseTable" class="tablesorter table">
+                <thead>
+                    <tr>
+                        <th>Protein ID</th>
+                        <th>Protein Name</th>
+                        <th>Tissue</th>
+                        <th>Spectral Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in mouse_proteins %}
+                        <tr>
+                            <td>{{ p.ens_id }}</td>
+                            <td>{{ p.name }}</td>
+                            <td>{{ p.tissue }}</td>
+                            <td>{{ p.count }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
 {% endblock %}
