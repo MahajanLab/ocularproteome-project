@@ -104,9 +104,9 @@ def download_mouse_vitrous(request):
         return response
 
 def download_mouse_retina(request):
-    with open(zip_root_dir + "Mouse_Vitreous_MahajanLab.xlsx", 'rb') as zipfile:
+    with open(zip_root_dir + "Mouse_Retina_MahajanLab.xlsx", 'rb') as zipfile:
         response = HttpResponse(zipfile.read(), content_type='application/force-download')
-        response['Content-Disposition'] = 'attachment;filename=Mouse_Vitreous_MahajanLab.xlsx'
+        response['Content-Disposition'] = 'attachment;filename=Mouse_Retina_MahajanLab.xlsx'
         return response
 
 
