@@ -74,7 +74,7 @@ def download(request):
     return render(request, "ocular_proteome_db/download.html")
 
 
-zip_root_dir = "/home/ted/Development/django-apps/ocular_proteome_db/OcularPDB/static/"
+zip_root_dir = "OcularPDB/static/"
 
 
 def download_retina(request):
