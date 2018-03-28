@@ -66,8 +66,6 @@
                 </tbody>
             </table>
         </div>
-    {% endif %}
-    {% if protein_list %}
         <div class="table-container">
             <h5>Human Vitreous Proteome Results</h5>
             <table id="vitreous_table" class="tablesorter table">
@@ -99,8 +97,6 @@
                 </tbody>
             </table>
         </div>
-    {% endif %}
-    {% if mouse_proteins %}
         <div class="table-container">
             <h5>Mouse Retina and Vitreous Proteome Results</h5>
             <table id="mouseTable" class="tablesorter table">
@@ -113,13 +109,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for p in mouse_proteins %}
-                        <tr>
-                            <td>{{ p.ens_id }}</td>
-                            <td>{{ p.name }}</td>
-                            <td>{{ p.tissue }}</td>
-                            <td>{{ p.count }}</td>
-                        </tr>
+                    {% for p in protein_list %}
+                        {% if p.count %}
+                            <tr>
+                                <td>{{ p.ens_id }}</td>
+                                <td>{{ p.name }}</td>
+                                <td>{{ p.tissue }}</td>
+                                <td>{{ p.count }}</td>
+                            </tr>
+                        {% endif %}
                     {% endfor %}
                 </tbody>
             </table>
