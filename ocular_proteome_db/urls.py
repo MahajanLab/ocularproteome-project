@@ -19,10 +19,13 @@ from OcularPDB import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index, name='index'),  # include('OcularPDB.urls')),
     path('home/', views.index, name='index'), #include('OcularPDB.urls')),
     path('search/', views.results, name='index'),
     path('download/', views.download, name='download'),
     path('download_retina/', views.download_retina, name='download_retina'),
     path('download_choroid/', views.download_choroid, name='download_rpe_choroid'),
-    path('download_vitreous/', views.download_vitreous, name='download_vitreous')
+    path('download_vitreous/', views.download_vitreous, name='download_vitreous'),
+    path('download_mouse_vitreous', views.download_mouse_vitrous, name="download_mouse_vitreous"),
+    path('download_mouse_retina', views.download_mouse_retina, name="download_mouse_retina")
 ]

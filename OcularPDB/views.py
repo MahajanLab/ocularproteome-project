@@ -70,21 +70,35 @@ zip_root_dir = "OcularPDB/static/"
 
 
 def download_retina(request):
-    with open(zip_root_dir + "retina_dataset.zip", 'rb') as zipfile:
+    with open(zip_root_dir + "Human_Retina_MahajanLab.xlsx", 'rb') as zipfile:
         response = HttpResponse(zipfile.read(), content_type='application/force-download')
-        response['Content-Disposition'] = 'attachment;filename=retina_dataset.zipfile'
+        response['Content-Disposition'] = 'attachment;filename=Human_Retina_MahajanLab.xlsx'
         return response
 
 
 def download_choroid(request):
-    with open(zip_root_dir + "rpe_choroid_dataset.zip", 'rb') as zipfile:
+    with open(zip_root_dir + "RPE_Choroid_MahajanLab.xlsx", 'rb') as zipfile:
         response = HttpResponse(zipfile.read(), content_type='application/force-download')
-        response['Content-Disposition'] = 'attachment;filename=rpe_choroid_dataset.zip'
+        response['Content-Disposition'] = 'attachment;filename=RPE_Choroid_MahajanLab.xlsx'
         return response
 
 
 def download_vitreous(request):
-    with open(zip_root_dir + "vitreous-dataset.zip", 'rb') as zipfile:
+    with open(zip_root_dir + "Human_Vitreous_MahajanLab.xlsx", 'rb') as zipfile:
         response = HttpResponse(zipfile.read(), content_type='application/force-download')
-        response['Content-Disposition'] = 'attachment;filename=vitreous_dataset.zip'
+        response['Content-Disposition'] = 'attachment;filename=Human_Vitreous_MahajanLab.xlsx'
         return response
+
+def download_mouse_vitrous(request):
+    with open(zip_root_dir + "Mouse_Vitreous_MahajanLab.xlsx", 'rb') as zipfile:
+        response = HttpResponse(zipfile.read(), content_type='application/force-download')
+        response['Content-Disposition'] = 'attachment;filename=Mouse_Vitreous_MahajanLab.xlsx'
+        return response
+
+def download_mouse_retina(request):
+    with open(zip_root_dir + "Mouse_Vitreous_MahajanLab.xlsx", 'rb') as zipfile:
+        response = HttpResponse(zipfile.read(), content_type='application/force-download')
+        response['Content-Disposition'] = 'attachment;filename=Mouse_Vitreous_MahajanLab.xlsx'
+        return response
+
+
