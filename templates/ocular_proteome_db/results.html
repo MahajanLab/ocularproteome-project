@@ -36,7 +36,7 @@
             {%  endfor %}
         </div>
     {% endif %}
-    {% if protein_list %}
+    {% if human_retina_rpe %}
         <div class="table-container">
             <h5>Human Retina and RPE-Choroid Proteome Results</h5>
             <table id="proteinTable" class="tablesorter table">
@@ -51,7 +51,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for p in protein_list %}
+                    {% for p in human_retina_rpe %}
                         {% if p.tissue != 'Vitreous' %}
                             <tr>
                                 <td>{{ p.ens_id }}</td>
@@ -66,6 +66,8 @@
                 </tbody>
             </table>
         </div>
+    {% endif %}
+    {% if human_vitreous %}
         <div class="table-container">
             <h5>Human Vitreous Proteome Results</h5>
             <table id="vitreous_table" class="tablesorter table">
@@ -81,7 +83,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for p in protein_list %}
+                    {% for p in human_vitreous %}
                         {% if p.tissue == 'Vitreous' %}
                             <tr>
                                 <td>{{ p.ens_id }}</td>
@@ -97,6 +99,8 @@
                 </tbody>
             </table>
         </div>
+    {% endif %}
+    {% if mouse_proteins %}
         <div class="table-container">
             <h5>Mouse Retina and Vitreous Proteome Results</h5>
             <table id="mouseTable" class="tablesorter table">
@@ -109,7 +113,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for p in protein_list %}
+                    {% for p in mouse_proteins %}
                         {% if p.count %}
                             <tr>
                                 <td>{{ p.ens_id }}</td>
