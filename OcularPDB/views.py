@@ -8,58 +8,61 @@ def results(request):
     protein_input = list(set(identifier.split(' ')))  # split elements in input into different elements at a space
 
     error_proteins = []  # list to store proteins entered but not found in database
-    protein_list = []  # add the RetinaProtein object to list which will hold all the proteins
+    human_retina_rpe = []  # add the RetinaProtein object to list which will hold all the proteins
+    mouse_proteins = []
+    human_vitreous = []
+
+
     protein_list_strings = []
 
     for i in range(len(protein_input)):
+        found = False
+
         # Search in Retina table
         retina_protein = RetinaProtein.search(protein_input[i])
-
-        if retina_protein is None:
-            error_proteins.append(protein_input[i] + ' ')
-        else:
-            protein_list.append(retina_protein)
+        if retina_protein is not None:
+            found = True
+            human_retina_rpe.append(retina_protein)
             protein_list_strings.append(retina_protein.ens_id + ' ')
 
         # Search in RPE-Choroid table
         choroid_protein = ChoroidProtein.search(protein_input[i])
-
-        if choroid_protein is None:
-            error_proteins.append(protein_input[i] + ' ')
-        else:
-            protein_list.append(choroid_protein)
+        if choroid_protein is not None:
+            found = True
+            human_retina_rpe.append(choroid_protein)
             protein_list_strings.append(choroid_protein.ens_id + ' ')
 
         # Search in Vitreous table
         vitreous_protein = VitreousProtein.search(protein_input[i])
-
-        if vitreous_protein is None:
-            error_proteins.append(protein_input[i] + ' ')
-        else:
-            protein_list.append(vitreous_protein)
+        if vitreous_protein is not None:
+            found = True
+            human_vitreous.append(vitreous_protein)
             protein_list_strings.append(vitreous_protein.ens_id + ' ')
 
         # Search mouse table
         mouse_retina_protein = MouseRetina.search(protein_input[i])
-        if mouse_retina_protein is None:
-            error_proteins.append(protein_input[i] + ' ')
-        else:
-            protein_list.append(mouse_retina_protein)
+        if mouse_retina_protein is not None:
+            found = True
+            mouse_proteins.append(mouse_retina_protein)
             protein_list_strings.append(mouse_retina_protein)
 
         # Search mouse table
         mouse_vitreous_protein = MouseRetina.search(protein_input[i])
-        if mouse_vitreous_protein is None:
-            error_proteins.append(protein_input[i] + ' ')
-        else:
-            protein_list.append(mouse_vitreous_protein)
+        if mouse_vitreous_protein is not None:
+            found = True
+            mouse_proteins.append(mouse_vitreous_protein)
             protein_list_strings.append(mouse_vitreous_protein)
+
+        if not found:
+            error_proteins.append(protein_input[i] + ' ')
 
     error_proteins = list(set(error_proteins))
     print(protein_list_strings)
     error_proteins = list(set(error_proteins)-set(protein_list_strings))
 
-    data = {'protein_list': protein_list,
+    data = {'human_vitreous': human_vitreous,
+            'human_retina_rpe': human_retina_rpe,
+            'mouse_proteins': mouse_proteins,
             'error_list': error_proteins,
             'search_text': identifier}
 
