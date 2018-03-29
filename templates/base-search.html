@@ -32,7 +32,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Ocular Proteome Database</a>
+        <a class="navbar-brand" href="/home/">Ocular Proteome Database</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -57,7 +57,7 @@
             <div class="full-width">
                 <form class="box full-width" action="/search/" method="post">
                     {% csrf_token %}
-                    <input id="protein-identifier" class="grow form-control" type="text" name="identifier" placeholder="For example, ENSP00000229264 or GNB3">
+                    <input id="protein-identifier" class="grow form-control" type="text" spellcheck="false" name="identifier" placeholder="For example, ENSP00000229264 or GNB3">
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
             </div>

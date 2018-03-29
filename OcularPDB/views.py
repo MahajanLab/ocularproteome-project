@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from OcularPDB.models import RetinaProtein, ChoroidProtein, VitreousProtein, MouseRetina, MouseVitreous
+import re
 
 
 def results(request):
     identifier = request._post['identifier']
-    protein_input = list(set(identifier.split(' ')))  # split elements in input into different elements at a space
+    protein_input = list(set(re.findall('[a-zA-Z0-9_-]+', identifier)))  # split elements in input into different elements at a space
 
     error_proteins = []  # list to store proteins entered but not found in database
     human_retina_rpe = []  # add the RetinaProtein object to list which will hold all the proteins
@@ -14,6 +15,8 @@ def results(request):
 
 
     protein_list_strings = []
+
+    error_proteins.clear()
 
     for i in range(len(protein_input)):
         found = False
@@ -47,7 +50,7 @@ def results(request):
             protein_list_strings.append(mouse_retina_protein)
 
         # Search mouse table
-        mouse_vitreous_protein = MouseRetina.search(protein_input[i])
+        mouse_vitreous_protein = MouseVitreous.search(protein_input[i])
         if mouse_vitreous_protein is not None:
             found = True
             mouse_proteins.append(mouse_vitreous_protein)
