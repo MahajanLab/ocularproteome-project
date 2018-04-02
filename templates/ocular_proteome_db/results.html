@@ -52,7 +52,7 @@
                 </thead>
                 <tbody>
                     {% for p in protein_list %}
-                        {% if p.tissue != 'Vitreous' %}
+                        {% if p.fovea_avg %}
                             <tr>
                                 <td>{{ p.ens_id }}</td>
                                 <td>{{ p.name }}</td>
@@ -82,7 +82,7 @@
                 </thead>
                 <tbody>
                     {% for p in protein_list %}
-                        {% if p.tissue == 'Vitreous' %}
+                        {% if p.vitreous_core %}
                             <tr>
                                 <td>{{ p.ens_id }}</td>
                                 <td>{{ p.name }}</td>
