@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import ocular_proteome_db.conf as config
+import ocular_proteome_db.conf as conf
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -82,10 +82,10 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'opdb',
-        'USER': config.AWS_RDS_USERNAME,
-        'PASSWORD': config.AWS_RDS_PASSWORD,
-        'HOST': config.AWS_RDS_ENDPOINT,
-        'PORT': config.AWS_RDS_PORT
+        'USER': conf.AWS_RDS_USERNAME,
+        'PASSWORD': conf.AWS_RDS_PASSWORD,
+        'HOST': conf.AWS_RDS_ENDPOINT,
+        'PORT': conf.AWS_RDS_PORT
 
     }
 }
