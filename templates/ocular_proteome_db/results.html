@@ -51,13 +51,8 @@
                     </tr>
                 </thead>
                 <tbody>
-<<<<<<< HEAD
-                    {% for p in protein_list %}
-                        {% if p.fovea_avg %}
-=======
                     {% for p in human_retina_rpe %}
                         {% if p.tissue != 'Vitreous' %}
->>>>>>> 4b5dfb3ca972e52a20c414424c38d006d7dc6ad1
                             <tr>
                                 <td>{{ p.ens_id }}</td>
                                 <td>{{ p.name }}</td>

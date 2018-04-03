@@ -7,3 +7,4 @@
 .idea/**/vcs.xml
 **/__pycache__/**
 
+ocular_proteome_db/conf.py
