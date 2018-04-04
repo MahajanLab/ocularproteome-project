@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import ocular_proteome_db.conf as conf
+#import ocular_proteome_db.conf as conf
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -82,10 +82,10 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'opdb',
-        'USER': conf.AWS_RDS_USERNAME,
-        'PASSWORD': conf.AWS_RDS_PASSWORD,
-        'HOST': conf.AWS_RDS_ENDPOINT,
-        'PORT': conf.AWS_RDS_PORT
+        'USER': AWS_RDS_USERNAME,
+        'PASSWORD': AWS_RDS_PASSWORD,
+        'HOST': AWS_RDS_ENDPOINT,
+        'PORT': AWS_RDS_PORT
 
     }
 }
@@ -135,3 +135,5 @@ STATIC_URL = 'OcularPDB/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'OcularPDB/static/'),
 )
+
+django_heroku.settings(locals()) # https://devcenter.heroku.com/articles/django-app-configuration https://devcenter.heroku.com/articles/deploying-python
