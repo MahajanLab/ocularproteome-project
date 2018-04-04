@@ -53,12 +53,16 @@
 
     <div class="row">
         <div class="col-md-8 offset-md-2 content">
-            <label for="protein-identifier">Enter Ensembl IDs and Protein names</label>
+            <label for="protein-identifier">Search Ensembl IDs and Protein Names</label>
+            <label>
+                <h3 style="margin-bottom: 0px !important;">Search Ensembl IDs and Protein Names</h3>
+                <small>Enter any combination of Ensembl IDs or Proteins Names</small>
+            </label>
             <div class="full-width">
                 <form class="box full-width" action="/search/" method="post">
                     {% csrf_token %}
-                    <input id="protein-identifier" class="grow form-control" type="text" spellcheck="false" name="identifier" placeholder="For example, ENSP00000229264 or GNB3">
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <input id="protein-identifier" class="grow form-control" type="text" spellcheck="false" name="identifier" placeholder="For example, ENSP00000353224 ENSMUSP00000099819 GNB3">
+                    <button type="submit" class="btn btn-default">Search</button>
                 </form>
             </div>
         </div>
