@@ -82,10 +82,10 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'opdb',
-        'USER': AWS_RDS_USERNAME,
-        'PASSWORD': AWS_RDS_PASSWORD,
-        'HOST': AWS_RDS_ENDPOINT,
-        'PORT': AWS_RDS_PORT
+        'USER': os.environ.get('AWS_RDS_USERNAME'),
+        'PASSWORD': os.environ.get('AWS_RDS_PASSWORD'),
+        'HOST': os.environ.get('AWS_RDS_ENDPOINT'),
+        'PORT': os.environ.get('AWS_RDS_PORT')
 
     }
 }
