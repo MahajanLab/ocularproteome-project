@@ -1,1 +1,1 @@
-web: gunicorn ocularproteome_project.wsgi
+web: gunicorn ocular_proteome_db.wsgi
