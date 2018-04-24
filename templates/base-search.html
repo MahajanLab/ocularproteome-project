@@ -28,7 +28,7 @@
     .full-width {
         width: 100% !important;
     }
-    .rednavbar {
+    .red {
         background-color: #8c1515 !important;
         border-color: #8c1515 !important;
     }
@@ -39,8 +39,8 @@
 </style>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-light rednavbar">
-        <a class="navbar-brand rednavbar" href="/home/">Ocular Proteome Database</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light red">
+        <a class="navbar-brand red" href="/home/">Ocular Proteome Database</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -69,7 +69,7 @@
                 <form class="box full-width" action="/search/" method="post">
                     {% csrf_token %}
                     <input id="protein-identifier" class="grow form-control" type="text" spellcheck="false" name="identifier" placeholder="For example, ENSP00000353224 ENSMUSP00000099819 GNB3">
-                    <button type="submit" class="btn btn-default rednavbar text-white">Search</button>
+                    <button type="submit" class="btn btn-default red text-white">Search</button>
                 </form>
             </div>
         </div>
