@@ -32,6 +32,10 @@
         background-color: #8c1515 !important;
         border-color: #8c1515 !important;
     }
+
+    .button:focus{
+        text-decoration-color: white;
+    }
 </style>
 
 <body>
@@ -65,7 +69,7 @@
                 <form class="box full-width" action="/search/" method="post">
                     {% csrf_token %}
                     <input id="protein-identifier" class="grow form-control" type="text" spellcheck="false" name="identifier" placeholder="For example, ENSP00000353224 ENSMUSP00000099819 GNB3">
-                    <button type="submit" class="btn btn-default rednavbar">Search</button>
+                    <button type="submit" class="btn btn-default rednavbar button">Search</button>
                 </form>
             </div>
         </div>
