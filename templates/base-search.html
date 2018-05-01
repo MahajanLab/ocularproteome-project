@@ -4,11 +4,18 @@
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Bootstrap requires jQuery, popper.js and their own js files -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
     {% block scripts %}{% endblock %}
 </head>
 
@@ -16,99 +23,109 @@
     body {
         overflow-x: hidden;
     }
+
     .content {
         margin-top: 48px;
     }
+
     .box {
         display: flex;
         float: left;
     }
+
     .grow {
         margin-right: 8px !important;
         flex-grow: 100;
     }
+
     .full-width {
         width: 100% !important;
     }
+
     .red {
         background-color: #8c1515 !important;
         border-color: #8c1515 !important;
     }
 
-    .offwhite{
+    .offwhite {
         background-color: #f9f8f3 !important;
         border-color: #f9f8f3 !important;
-        color: #8c1515; !important;
+        color: #8c1515;
+    !important;
     }
 
-    .gobalheader{
+    .gobalheader {
         height: 32px;
         width: 100%;
         color: white;
         margin: 0 0 0 0 !important;
     }
 
-    .sanspro{
+    .sanspro {
         font-family: 'Source Sans Pro', sans-serif !important;
     }
-
 
 
 </style>
 
 <body>
-    <div class="gobalheader red" style="font-family: 'Crimson Text', serif;">
-        <div style="padding: 4px">
-            Stanford University
-        </div>
+<div class="gobalheader red" style="font-family: 'Crimson Text', serif;">
+    <div style="padding: 4px">
+        Stanford University
     </div>
-    
-    <div class = "offwhite globalheader">
+</div>
+
+<a href="/home/">
+    <div class="offwhite globalheader">
         {% load static %}
         <img style="max-width: 400px; margin: 32px 0px 16px 40px" src="{% static "sml.PNG" %}" alt="image"/>
     </div>
-    
-    <nav class="navbar navbar-expand-lg navbar-light bg-light offwhite sanspro" style="color: #8c1515;">
-        <a class="navbar-brand offwhite" href="/home/">Ocular Proteome Database</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/home/">Search <span class="sr-only">(current)</span> </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/download/">Download</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="https://sites.stanford.edu/jumpstart-mahajan/">About</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <a>
 
-    <div class="row">
-        <div class="col-md-8 offset-md-2 content">
-            <label>
-                <h3 style="margin-bottom: 0px !important;">Search Ensembl IDs and Protein Names</h3>
-                <small>Enter any combination of Ensembl IDs or Proteins Names</small>
-            </label>
-            <div class="full-width">
-                <form class="box full-width" action="/search/" method="post">
-                    {% csrf_token %}
-                    <input id="protein-identifier" class="grow form-control" type="text" spellcheck="false" name="identifier" placeholder="For example, ENSP00000353224 ENSMUSP00000099819 GNB3">
-                    <button type="submit" class="btn btn-default red text-white">Search</button>
-                </form>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light offwhite sanspro" style="color: #8c1515;">
+            <a class="navbar-brand offwhite" href="/home/">Ocular Proteome Database</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/">Search <span class="sr-only">(current)</span> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/download/">Download</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank"
+                           href="https://sites.stanford.edu/jumpstart-mahajan/">About</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-8 offset-md-2 content">
+                <label>
+                    <h3 style="margin-bottom: 0px !important;">Search Ensembl IDs and Protein Names</h3>
+                    <small>Enter any combination of Ensembl IDs or Proteins Names</small>
+                </label>
+                <div class="full-width">
+                    <form class="box full-width" action="/search/" method="post">
+                        {% csrf_token %}
+                        <input id="protein-identifier" class="grow form-control" type="text" spellcheck="false"
+                               name="identifier" placeholder="For example, ENSP00000353224 ENSMUSP00000099819 GNB3">
+                        <button type="submit" class="btn btn-default red text-white">Search</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="content">
-                {% block content %}{% endblock %}
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="content">
+                    {% block content %}{% endblock %}
+                </div>
             </div>
         </div>
-    </div>
 </body>
 </html>
